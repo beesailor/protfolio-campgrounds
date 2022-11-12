@@ -2,6 +2,7 @@ import { ScrollView, Text } from 'react-native';
 import { Avatar, ListItem, Card } from 'react-native-elements';
 import { PARTNERS } from '../shared/partners';
 import { useState } from 'react';
+import Loading from '../components/LoadingComponent';
 
 const Mission = () => {
     return (
@@ -18,6 +19,33 @@ const Mission = () => {
 }
 const AboutScreen = () => {
     const [partners, setPartners] = useState(PARTNERS);
+    
+    if (partners.isLoading) {
+        return (
+            <ScrollView>
+                <Mission />
+                <Card>
+                    <Card.Title>Community Partners</Card.Title>
+                    <Card.Divider />
+                    <Loading />
+                </Card>
+            </ScrollView>
+        );
+    }
+
+    if (partners.errMess) {
+        return (
+            <ScrollView>
+                <Mission />
+                <Card>
+                    <Card.Title>Community Partners</Card.Title>
+                    <Card.Divider />
+                    <Text>{partners.errMess}</Text>
+                </Card>
+            </ScrollView>
+        );
+    }
+
     return (
         <ScrollView>
             <Mission />
