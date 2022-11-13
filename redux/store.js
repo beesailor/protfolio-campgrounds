@@ -5,13 +5,12 @@ import { partnersReducer } from '../features/partners/partnersSlice';
 import { promotionsReducer } from '../features/promotions/promotionsSlice';
 import { favoritesReducer } from '../features/favorites/favoritesSlice';
 
-
 export const store = configureStore({
     reducer: {
         campsites: campsitesReducer,
         comments: commentsReducer,
         partners: partnersReducer,
-        promotions: promotionsReducer
-        favorites: favoritesReducers
+        promotions: promotionsReducer,
+        favorites: favoritesReducer
     }
 });
