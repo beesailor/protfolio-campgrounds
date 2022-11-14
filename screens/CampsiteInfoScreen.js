@@ -120,7 +120,6 @@ const CampsiteInfoScreen = ({ route }) => {
                             onPress={()=> {
                                 handleSubmit();
                                 resetForm();
-                                .0
                             }}
                             title='Submit'
                             color='#5637DD'
@@ -143,7 +142,7 @@ const CampsiteInfoScreen = ({ route }) => {
 };
 
 const styles = StyleSheet.create({
-    commentsTitle: {
+    CommentsTitle: {
         textAlign: 'center',
         backgroundColor: '#fff',
         fontSize: 16,
@@ -152,16 +151,16 @@ const styles = StyleSheet.create({
         padding: 10,
         paddingTop: 30
     },
-    commentItem: {
+    CommentItem: {
         paddingVertical: 10,
         paddingHorizontal: 20,
         backgroundColor: '#fff'
     },
 //TASK ONE SET STYLE FOR MODAL    
-    modal: {
+    Modal: {
         justifyContent: 'center',
         margin: 20
-    }
+    },
 });
 
 export default CampsiteInfoScreen;
