@@ -4,6 +4,7 @@ import RenderCampsite from '../features/campsites/RenderCampsite';
 import { toggleFavorite } from '../features/favorites/favoritesSlice';
 import { useState } from 'react';
 import { Rating, Author, Comment } from 'react-native-elements';
+import { postComment } from '../features/comments/commentsSlice';
 
 const CampsiteInfoScreen = ({ route }) => {
     const { campsite } = route.params;
@@ -28,7 +29,7 @@ const CampsiteInfoScreen = ({ route }) => {
                 campsiteId: campsite.id
             }
         );
-        console.log( newComment, setShowModal(!showModal) );
+        dispatch(postComment(newComment));
     };
 
 //TASK TWO: ADD A NEW FUNCTION- RESET FORM    
