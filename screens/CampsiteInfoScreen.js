@@ -1,8 +1,9 @@
-import { FlatList, StyleSheet, Text, View, Button, Modal } from 'react-native';
+import { FlatList, StyleSheet, Text, View, Button, Modal, TextInput } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
 import RenderCampsite from '../features/campsites/RenderCampsite';
 import { toggleFavorite } from '../features/favorites/favoritesSlice';
 import { useState } from 'react';
+import { Rating, Author, Comment } from 'react-native-elements';
 
 const CampsiteInfoScreen = ({ route }) => {
     const { campsite } = route.params;
@@ -11,10 +12,38 @@ const CampsiteInfoScreen = ({ route }) => {
     const dispatch = useDispatch();
     
 //TASK ONE STEP: CREATE A LOCAL STATE VARIABLE CALLED SHOW MODAL
-    
     const [showModal, setShowModal] = useState(false);
+// TASK TWO STEP: INTITIALIZE THREE NEW STATE VARIABLES
+    const rating = 5;
+    const author = "";
+    const text = "";
+
+//TASK TWO: ADD A NEW FUNCTION- HANDLE SUBMIT
+    const handleSubmit = ()=> {
+        return (
+            newComment = {
+                author,
+                rating,
+                text,
+                campsiteId: campsite.id
+            }
+        );
+        console.log( newComment, setShowModal(!showModal) );
+    };
+
+//TASK TWO: ADD A NEW FUNCTION- RESET FORM    
+    const resetForm = () => {
+        return (
+        setRating(5);
+        setAuthor("");
+        setTitle("");
+        );
+    };
 
     const renderCommentItem = ({ item }) => {
+        const { rating } = this.props;
+        <Rating imageSize={10} readonly startingValue={this.rating} style={styles.rating} />;
+        
         return (
             <View style={styles.commentItem}>
                 <Text style={{ fontSize: 14 }}>{item.text}</Text>
@@ -23,6 +52,7 @@ const CampsiteInfoScreen = ({ route }) => {
                     {`-- ${item.author}, ${item.date}`}
                 </Text>
             </View>
+            
         );
     };
 
@@ -61,6 +91,41 @@ const CampsiteInfoScreen = ({ route }) => {
             onRequestClose={() => setShowModal(!showModal)}
             >
                 <View style={styles.modal}>
+                    <Rating>
+                        showRating
+                        {/* starting value should equal "the state" */}
+                        startingValue="{3}" 
+                        imageSize={40}
+                        onFinishRating={(rating)=> setRating(rating)} 
+                        style={{paddingVertical: 10}}
+                    </Rating>
+                    <Input
+                        placeholder='BASIC INPUT'
+                        leftIcon={{ type: 'font-awesome', name: 'user-o'}}
+                        leftIconContainerStyle
+                        onChangeText={(rating)=> setRating(rating)} 
+                        value={text}
+                    >
+                    </Input>
+                    <Input
+                        placeholder='BASIC INPUT'
+                        leftIcon={{ type: 'font-awesome', name: 'comment-o'}}
+                        leftIconContainerStyle
+                        onChangeText={(rating)=> setRating(rating)} 
+                        value={text}
+                    >
+                    </Input>
+                    <View style={{margin: 10}}>
+                        <Button>
+                            onPress={()=> {
+                                handleSubmit();
+                                resetForm();
+                                .0
+                            }}
+                            title='Submit'
+                            color='#5637DD'
+                        </Button>
+                    </View>
                     <View style={{margin: 10}}>
                         <Button>
                             onPress={() => {

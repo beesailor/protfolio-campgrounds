@@ -101,7 +101,7 @@ const ContactNavigator = () => {
 //     return (
 //         <Stack.Navigator screenOptions={screenOptions}>
 //             <Stack.Screen
-//                 name='Reservartion'
+//                 name='Reservation'
 //                 component={ReservationScreen}
 //                 options={({ navigation }) => ({
 //                     title: 'Reservation Search',
