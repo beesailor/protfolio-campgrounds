@@ -12,21 +12,13 @@ const RenderCampsite = (props) => {
                 <Card.Image source={{ uri: baseUrl + campsite.image }}>
                     <View style={styles.cardRow}>
                     
-                        <Text 
-                            style={
-                                //TASK ONE 
-                                styles.cardText
-                                // color: 'white',
-                                // textAlign: 'center',
-                                // fontSize: 20
-                            }
-                        >
+                        <Text style={ styles.cardText }>
                             {campsite.name}
                         </Text>
                     </View>
                 </Card.Image>
                 <Text style={{ margin: 20 }}>{campsite.description}</Text>
-                <View>
+                <View style={ styles.cardRow }>
                     <Icon
                         name={props.isFavorite ? 'heart' : 'heart-o'}
                         type='font-awesome'

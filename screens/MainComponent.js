@@ -96,29 +96,6 @@ const ContactNavigator = () => {
     );
 };
 
-// const ReservationNavigator = () => {
-//     const Stack = createStackNavigator();
-//     return (
-//         <Stack.Navigator screenOptions={screenOptions}>
-//             <Stack.Screen
-//                 name='Reservation'
-//                 component={ReservationScreen}
-//                 options={({ navigation }) => ({
-//                     title: 'Reservation Search',
-//                     headerLeft: () => (
-//                         <Icon
-//                             name='tree'
-//                             type='font-awesome'
-//                             iconStyle={styles.stackIcon}
-//                             onPress={() => navigation.toggleDrawer()}
-//                         />
-//                     )
-//                 })}
-//             />
-//         </Stack.Navigator>
-//     );
-// };
-
 const ReservationNavigator = () => {
     const Stack = createStackNavigator();
     return (
