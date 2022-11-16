@@ -11,7 +11,6 @@ const RenderCampsite = (props) => {
             <Card containerStyle={styles.cardContainer}>
                 <Card.Image source={{ uri: baseUrl + campsite.image }}>
                     <View style={styles.cardRow}>
-                    
                         <Text style={ styles.cardText }>
                             {campsite.name}
                         </Text>
@@ -43,7 +42,7 @@ const RenderCampsite = (props) => {
             </Card>
         );
     }
-    return <View />;
+    // return <View />;
 };
 
 const styles = StyleSheet.create({

@@ -11,9 +11,9 @@ const CampsiteInfoScreen = ({ route }) => {
     const comments = useSelector((state) => state.comments);
     const favorites = useSelector((state) => state.favorites);
     const [showModal, setShowModal] = useState(false);
-    const [rating, setRating] = (5);
-    const [author, setAuthor] = (" ");
-    const [text, setText] = (" ");
+    const [rating, setRating] = useState(5);
+    const [author, setAuthor] = useState("");
+    const [text, setText] = useState("");
 
     const dispatch = useDispatch();
 
@@ -79,7 +79,7 @@ const CampsiteInfoScreen = ({ route }) => {
                 animationType='slide'
                 transparent={false}
                 visible={showModal}
-                onRequestClose={() => setShowModal(!showModal)}>
+                onRequestClose={() => setShowModal(!showModal)}
             >
                 <View style={styles.modal}>
                     <Rating
@@ -110,7 +110,7 @@ const CampsiteInfoScreen = ({ route }) => {
                                 resetForm();
                             }}
                             title='Submit'
-                            color='563700'
+                            color='#5637DD'
                         />
                     </View>
                     <View style={{margin: 10}}>
@@ -120,7 +120,7 @@ const CampsiteInfoScreen = ({ route }) => {
                                 resetForm();
                             }}
                             title='Cancel'
-                            color='808080'
+                            color='#808080'
                         />
                     </View>
                 </View>
@@ -131,7 +131,7 @@ const CampsiteInfoScreen = ({ route }) => {
     
 
 const styles = StyleSheet.create({
-    CommentsTitle: {
+    commentsTitle: {
         textAlign: 'center',
         backgroundColor: '#fff',
         fontSize: 16,
@@ -140,15 +140,15 @@ const styles = StyleSheet.create({
         padding: 10,
         paddingTop: 30
     },
-    CommentItem: {
+    commentItem: {
         paddingVertical: 10,
         paddingHorizontal: 20,
         backgroundColor: '#fff'
     },
-    Modal: {
+    modal: {
         justifyContent: 'center',
         margin: 20
-    },
+    }
 });
 
 export default CampsiteInfoScreen;
