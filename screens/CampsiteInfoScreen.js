@@ -11,19 +11,20 @@ const CampsiteInfoScreen = ({ route }) => {
     const comments = useSelector((state) => state.comments);
     const favorites = useSelector((state) => state.favorites);
     const [showModal, setShowModal] = useState(false);
-    const [rating, setRating] = ("5");
+    const [rating, setRating] = (5);
     const [author, setAuthor] = (" ");
     const [text, setText] = (" ");
 
     const dispatch = useDispatch();
 
     const handleSubmit = ()=> {
-        newComment = {
+        const newComment = {
             author,
             rating,
             text,
             campsiteId: campsite.id
         }
+        //dispatch the new postComment action creator, postComment is imported above
         dispatch(postComment(newComment))
         setShowModal(!showModal)
     };
@@ -31,7 +32,7 @@ const CampsiteInfoScreen = ({ route }) => {
     const resetForm = () => {
         setRating(5)
         setAuthor("")
-        setTitle("")
+        setText("")
     };
 
     const renderCommentItem = ({ item }) => {
@@ -40,7 +41,7 @@ const CampsiteInfoScreen = ({ route }) => {
                 <Text style={{ fontSize: 14 }}>{item.text}</Text>
                 <Rating
                     readonly
-                    startingValue={rating} 
+                    startingValue={rating}
                     imageSize={10}
                     style={{ alignItems: 'flex-start', paddingvertical: '5%'}}
                 />
@@ -50,8 +51,6 @@ const CampsiteInfoScreen = ({ route }) => {
             </View>
         );
     };
-
-//good here down
     return (
         <>
             <FlatList
@@ -91,16 +90,16 @@ const CampsiteInfoScreen = ({ route }) => {
                         style={{paddingVertical: 10}}
                     />
                     <Input
-                            placeholder='Author'
-                            leftIcon={{ type: 'font-awesome', name: 'user-o'}}
-                            leftIconContainerStyle
-                            onChangeText={(author)=> setAuthor(author)} 
-                            value={author}
+                        placeholder='Author'
+                        leftIcon={{ type: 'font-awesome', name: 'user-o'}}
+                        leftIconContainerStyle={{paddingRight: 10}}
+                        onChangeText={(author)=> setAuthor(author)} 
+                        value={author}
                     />
                     <Input
                         placeholder='Comment'
                         leftIcon={{ type: 'font-awesome', name: 'comment-o'}}
-                        leftIconContainerStyle
+                        leftIconContainerStyle={{paddingRight: 10}}
                         onChangeText={(text)=> setText(text)} 
                         value={text}
                     />

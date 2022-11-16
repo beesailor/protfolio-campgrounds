@@ -1,33 +1,27 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { baseUrl } from '../../shared/baseUrl';
 
-export const postComment = createAsyncThunk(
-    'comments/postComment',
-    async (payload, { dispatch, getState }) => {
-        setTimeout(() => {
-            const { comments } = getState()
-            payload.date=new Date().toISOString()
-            payload.id=comments.commentsArray.length
-            console.log(payload)
-            dispatch(addComment(payload))
-        }, 2000);
-    }
-);
-
-
 export const fetchComments = createAsyncThunk(
     'comments/fetchComments',
     async () => {
         const response = await fetch(baseUrl + 'comments');
-        return response.json();
+        if (!response.ok ) {
+            return Promis.reject('Unable to fetch, status: ' + response.status);
+        }
+        const data = await response.json();
+        return data;
     }
 );
 
-export const postComments = createAsyncThunk(
-    'comments/postComments',
+export const postComment = createAsyncThunk(
+    'comments/postComment',
     async (payload, { dispatch, getState }) => {
         setTimeout(() => {
             const { comments } = getState();
+            payload.date=new Date().toISOString()
+            payload.id=comments.commentsArray.length
+            console.log(payload)
+            dispatch(addComment(payload))
         }, 2000);
     }
 );
