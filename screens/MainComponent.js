@@ -239,26 +239,26 @@ const Main = () => {
         dispatch(fetchComments());
     }, [dispatch]);
 
-    useEffect(() => {
-        NetInfo.fetch().then((connectionInfo) => {
+    const showNetInfo = async () => {
+        const connectionInfo = await NetInfo.fetch()
             Platform.OS === 'ios'
-                ? Alert.alert(
-                      'Initial Network Connectivity Type:',
-                      connectionInfo.type
-                  )
-                : ToastAndroid.show(
-                      'Initial Network Connectivity Type: ' +
-                          connectionInfo.type,
-                      ToastAndroid.LONG
-                  );
+            ? Alert.alert(
+                'Initial Network Connectivity Type:',
+                connectionInfo.type
+            )
+            : ToastAndroid.show(
+                'Initial Network Connectivity Type: ' +
+                connectionInfo.type,
+                ToastAndroid.LONG
+            );
+    };
+
+    useEffect(()=> {
+        showNetInfo();
+
+        const unsubscribeNetInfo = NetInfo.addEventListener((connectionInfo) => {
+            handleConnectivityChange(connectionInfo);
         });
-
-        const unsubscribeNetInfo = NetInfo.addEventListener(
-            (connectionInfo) => {
-                handleConnectivityChange(connectionInfo);
-            }
-        );
-
         return unsubscribeNetInfo;
     }, []);
 
